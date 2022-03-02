@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Joker App</string>
+    <string name="menu_home">Ínicio</string>
+    <string name="menu_joker_day">Piada do Dia</string>
+    <string name="menu_about">Sobre</string>
+    <string name="social">Social</string>
+    <string name="about">Os fatos de Chuck Norris são fatos satíricos sobre o artista marcial e ator Chuck Norris que se tornaram um fenômeno da Internet e, como resultado, se tornaram difundidos na cultura popular. Os "fatos" normalmente são afirmações hiperbólicas absurdas sobre a dureza, atitude, virilidade, sofisticação e masculinidade de Norris.</string>
+    <string name="build_version">Versão (%1$s)</string>
+</resources>
