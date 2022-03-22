@@ -9,7 +9,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 object HTTPClient {
 
     private const val BASE_URL = "https://api.tiagoaguiar.co/"
-//    const val API_KEY = "fc20a586-053f-494a-a30e-438df66c326f"
 
 
     private fun httpClient(): OkHttpClient {
