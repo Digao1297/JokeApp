@@ -11,13 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digao1297.jokerapp.R
+import br.com.digao1297.jokerapp.data.ApiKeyRemoteDataSource
 import br.com.digao1297.jokerapp.data.CategoryRemoteDataSource
 import br.com.digao1297.jokerapp.model.Category
 import br.com.digao1297.jokerapp.presentation.HomePresenter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieAdapter
+import org.koin.android.ext.android.get
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), DataChanged {
 
     private lateinit var presenter: HomePresenter
     private val adapter = GroupieAdapter()
@@ -26,7 +28,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = HomePresenter(this, CategoryRemoteDataSource())
+        presenter = HomePresenter(this, CategoryRemoteDataSource(), get<ApiKeyRemoteDataSource>())
     }
 
     override fun onCreateView(
@@ -44,6 +46,7 @@ class HomeFragment : Fragment() {
         val recycleView = view.findViewById<RecyclerView>(R.id.rv_home)
         recycleView.layoutManager = LinearLayoutManager(requireContext())
 
+
         if (adapter.itemCount == 0) {
             presenter.findAllCategories()
         }
@@ -52,7 +55,7 @@ class HomeFragment : Fragment() {
 
         adapter.setOnItemClickListener { item, view ->
             val bundle = Bundle()
-            bundle.putSerializable(JokeFragment.CATEGORY_KEY,(item as CategoryItem).category)
+            bundle.putSerializable(JokeFragment.CATEGORY_KEY, (item as CategoryItem).category)
             findNavController().navigate(R.id.action_nav_home_to_nav_joke, bundle)
         }
 
@@ -73,5 +76,14 @@ class HomeFragment : Fragment() {
 
     fun showFailure(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun showDialog() {
+        val dialog = DialogApiKeyFragment(this)
+        dialog.show(childFragmentManager, dialog.tag)
+    }
+
+    override fun onDataChanged() {
+        presenter.findAllCategories()
     }
 }

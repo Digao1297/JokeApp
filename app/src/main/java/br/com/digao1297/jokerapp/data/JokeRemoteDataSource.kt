@@ -1,6 +1,7 @@
 package br.com.digao1297.jokerapp.data
 
-import android.util.Log
+import br.com.digao1297.jokerapp.data.httpClient.ChuckNorrisAPI
+import br.com.digao1297.jokerapp.data.httpClient.HTTPClient
 import br.com.digao1297.jokerapp.model.Joke
 import org.json.JSONObject
 import retrofit2.Call

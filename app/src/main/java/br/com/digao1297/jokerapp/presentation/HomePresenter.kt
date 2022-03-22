@@ -1,6 +1,8 @@
 package br.com.digao1297.jokerapp.presentation
 
 import android.graphics.Color
+import android.util.Log
+import br.com.digao1297.jokerapp.data.ApiKeyRemoteDataSource
 import br.com.digao1297.jokerapp.data.DefaultCallback
 import br.com.digao1297.jokerapp.data.CategoryRemoteDataSource
 import br.com.digao1297.jokerapp.model.Category
@@ -8,12 +10,19 @@ import br.com.digao1297.jokerapp.view.HomeFragment
 
 class HomePresenter(
     private val view: HomeFragment,
-    private val dataSource: CategoryRemoteDataSource
+    private val dataSource: CategoryRemoteDataSource,
+    private val apiKeyDataSource: ApiKeyRemoteDataSource
 ) : DefaultCallback<List<String>> {
 
     fun findAllCategories() {
-        view.showProgressBar()
-        dataSource.findAllCategories(this)
+
+        if(apiKeyDataSource.getLocalApiKey() == null){
+            view.showDialog()
+        }else {
+            view.showProgressBar()
+            dataSource.findAllCategories(this)
+        }
+
     }
 
     override fun onSuccess(response: List<String>) {

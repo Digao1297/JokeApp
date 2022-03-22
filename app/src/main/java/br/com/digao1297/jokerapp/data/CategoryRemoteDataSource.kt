@@ -1,6 +1,8 @@
 package br.com.digao1297.jokerapp.data
 
 
+import br.com.digao1297.jokerapp.data.httpClient.ChuckNorrisAPI
+import br.com.digao1297.jokerapp.data.httpClient.HTTPClient
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
