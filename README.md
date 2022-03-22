@@ -10,7 +10,7 @@
 </br>
 
 ## 📝 Descrição
-Um simples aplicativo para visualizar as piadas do Chuck Norris, sendo possível filtrá-las por categorias ou a piada do dia.
+Um simples aplicativo para visualizar as piadas do Chuck Norris, sendo possível filtrá-las por categorias ou a piada do dia, possuindo autenticação via token gerado por e-mail dos alunos do curso.
 
 
 ## 🚀 Telas
